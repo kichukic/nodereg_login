@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb://localhost:27017/TEST").then(()=>{
+mongoose.connect("mongodb://127.0.0.1:27017/TEST").then(()=>{
     console.log("Connected to database")
 }).catch(()=>{
     console.log("Failed to connect to database")
