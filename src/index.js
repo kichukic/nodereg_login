@@ -14,12 +14,11 @@ app.use(morgan('tiny'))
 app.use(express.json())
 app.set("view engine","hbs")
 app.set("views",templatepath)
-
+app.set("view engine","hbs")
 
 app.get("/",(req,res)=>{
     res.render("home")
 })
-
 
 app.get("/signup",(req,res)=>{
     res.render("signup")
@@ -54,7 +53,9 @@ try {
 app.post("/login",async(req,res)=>{
     try {
         const checkuser = await mongodb.collections.findOne({email: req.body.email})
+        console.log("the user is",checkuser)
         if(checkuser.password === req.body.password){
+      
             res.render("home")
         }else{
             res.render("wrong password")
@@ -63,9 +64,6 @@ app.post("/login",async(req,res)=>{
         res.send("wrong credentials")
     }
 })
-
-
-
 
 
 
